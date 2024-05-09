@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+format: html
+---
+```{python}
+import random
+import numpy as np
+import scipy.stats as st 
+```
+
+```{python}
+def interval_confidence(mi, sigma, n, N):
+    i = 0
+    while i <= N:
+        y = 0
+        norm = np.random.normal(mi, sigma, n)
+        interval = st.norm.interval(confidence=0.9, loc= np.mean(norm), scale = st.sem(norm))
+        if mi > interval[0] and mi < interval[1]:
+            y += 1
+        prob = y/N
+        i+=1
+    return prob
+```
+
+```{python}
+mi = 3
+sigma = 2
+n = 2
+N = 30
+
+interval_confidence(mi, sigma, n, N)
+```
