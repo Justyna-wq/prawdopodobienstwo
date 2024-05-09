@@ -1,6 +1,7 @@
 ---
 title: "Zadanie"
 format: html
+jupyter: python3
 ---
 ```{python}
 import random
